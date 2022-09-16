@@ -38,7 +38,6 @@ sprites_list.add(ball)
 game_over = False
 clock = pygame.time.Clock()
 
-
 while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -57,6 +56,15 @@ while not game_over:
         paddleB.moveDown(5)
 
     sprites_list.update()
+
+    if ball.rect.x >= 590:
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.x <= 0:
+        ball.velocity[0] = -ball.velocity[0]
+    if ball.rect.y > 390:
+        ball.velocity[1] = -ball.velocity[1]
+    if ball.rect.y < 0:
+        ball.velocity[1] = -ball.velocity[1] 
 
     dis.fill(BLACK)
     pygame.draw.line(dis, WHITE, [300, 0], [300, 800], 5)

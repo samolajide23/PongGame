@@ -1,4 +1,5 @@
 import pygame
+from random import randint
 BLACK = (0, 0, 0)
 
 
@@ -12,4 +13,9 @@ class Ball(pygame.sprite.Sprite):
 
         pygame.draw.rect(self.image, color, [0, 0, width, height])
 
+        self.velocity = [randint(4, 8), randint(-8, 8)]
         self.rect = self.image.get_rect()
+
+    def update(self):
+        self.rect.x += self.velocity[0]
+        self.rect.y += self.velocity[1]
