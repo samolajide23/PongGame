@@ -1,5 +1,5 @@
 import pygame
-from paddle import paddle
+from paddle import Paddle
 
 pygame.init()
 
@@ -16,8 +16,19 @@ display_height = 400
 dis = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption('Pong Game')
 
-game_over = False
+paddleA = Paddle(WHITE, 10, 100)
+paddleA.rect.x = 20
+paddleA.rect.y = 200
 
+paddleB = Paddle(WHITE, 10, 100)
+paddleB.rect.x = 570
+paddleB.rect.y = 100
+
+sprites_list = pygame.sprite.Group()
+sprites_list.add(paddleA)
+sprites_list.add(paddleB)
+
+game_over = False
 clock = pygame.time.Clock()
 
 
@@ -29,8 +40,11 @@ while not game_over:
             if event.key == pygame.K_x:
                 game_over == True
 
+    sprites_list.update()
+
     dis.fill(BLACK)
     pygame.draw.line(dis, WHITE, [300, 0], [300, 800], 5)
+    sprites_list.draw(dis)
 
     pygame.display.flip()
 
