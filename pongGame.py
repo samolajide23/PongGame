@@ -40,6 +40,15 @@ while not game_over:
             if event.key == pygame.K_x:
                 game_over == True
 
+    if pygame.key.get_pressed()[pygame.K_w]:
+            paddleA.moveUp(5)
+    if pygame.key.get_pressed()[pygame.K_s]:
+            paddleA.moveDown(5)
+    if pygame.key.get_pressed()[pygame.K_UP]:
+            paddleB.moveUp(5)
+    if pygame.key.get_pressed()[pygame.K_DOWN]:
+            paddleB.moveDown(5)
+            
     sprites_list.update()
 
     dis.fill(BLACK)
