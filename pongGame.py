@@ -1,4 +1,5 @@
 import pygame
+from paddle import paddle
 
 pygame.init()
 
@@ -24,9 +25,12 @@ while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over = True
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_x:
+                game_over == True
 
     dis.fill(BLACK)
-    pygame.draw.line(dis,WHITE,[300,0], [300,800], 5)
+    pygame.draw.line(dis, WHITE, [300, 0], [300, 800], 5)
 
     pygame.display.flip()
 
